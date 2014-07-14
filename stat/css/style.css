@@ -1,0 +1,71 @@
+body {
+	font-size: 0.9em;
+	min-width: 300px;
+	font-family:'Lucida Grande','Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
+}
+
+.header {
+	background-color: #333;
+}
+
+.header h1 {
+	margin: 0;
+	padding: 15px;
+	font-size: 1.2em;
+	font-weight: normal;
+	color: #FFF;
+}
+
+.menu {
+	margin: 20px;
+}
+
+.box {
+	margin: 20px;
+}
+
+.pure-button-small {
+	font-size: 0.8em;
+}
+
+
+.pager {
+	margin: 20px;
+}
+
+
+
+.pure-button-success,
+.pure-button-error,
+.pure-button-warning,
+.pure-button-secondary {
+    color: white;
+    border-radius: 4px;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.pure-button-success {
+  background: rgb(28, 184, 65);
+}
+.pure-button-error {
+  background: rgb(202, 60, 60);
+}
+.pure-button-warning {
+  background: rgb(223, 117, 20);
+}
+.pure-button-secondary {
+  background: rgb(66, 184, 221);
+}
+
+
+.pure-table-header {
+  background: rgb(66, 184, 221);
+}
+
+
+.pure-table thead {
+  background:#153FA1;
+  color:#F0F0F0;
+  text-align:left;
+  vertical-align:bottom
+}
