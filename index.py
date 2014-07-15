@@ -10,7 +10,7 @@ from app.controllers import *
 def server_static(filepath):
 	return static_file(filepath, root='./stat/')
 
-run(host='0.0.0.0', port=80, debug=True, reloader=True)
+#run(host='0.0.0.0', port=80, debug=True, reloader=True)
 
 #if you use gunicorn
 #app = default_app()

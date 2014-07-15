@@ -3,7 +3,7 @@
 import sys
 sys.path.append('libs')
 
-from bottle import route, post, request, redirect, jinja2_template as template
+from bottle import route, post, request, redirect, jinja2_template as template, response
 
 import app.models.infra
 model = app.models.infra.Infra()
@@ -27,6 +27,14 @@ def reg_api():
 
     model.reg(host)
     return
+
+@route('/get_hostname')
+def get_hostname():
+    ipaddress = request.query.get('ipaddress')
+    host = model.get_hostname(ipaddress)
+
+    return '%s' % host["hostname"]
+
 
 @route('/edit/<id>')
 def edit_host(id):

@@ -20,7 +20,16 @@ class Infra:
 
         sql = "select * from host where id = %s"
         db.con.execute(sql,(id,))
+
         return db.con.fetchone()
+
+      def get_hostname(self,ipaddress):
+
+        sql = "select * from host where ipaddress = %s"
+        db.con.execute(sql,(ipaddress,))
+
+        return db.con.fetchone()
+
 
       def reg_dns(self,id):
 	
@@ -33,7 +42,6 @@ class Infra:
         ip = host["ipaddress"]
 
 	subprocess.call(['/usr/local/bin/cli53', 'rrcreate' , domain, hostn, 'A', ip, '--ttl', '3600'])
-	#subprocess.call(['/usr/bin/local/cli53', 'rrlist' , 'kazutan.info'])
 
       def reg(self,host):
  
@@ -43,12 +51,10 @@ class Infra:
 
 	if result:
 
-                sql = "update host set "
-                sql += " hostname=%s"
-                sql += ",regdate=CURRENT_TIMESTAMP"
+                sql = "update host set"
+                sql += " regdate=CURRENT_TIMESTAMP"
                 sql += " where ipaddress = %s"
                 db.con.execute(sql, (
-                                    host["hostname"],
                                     host["ipaddress"],
                                     ))
 
@@ -83,12 +89,5 @@ class Infra:
                                     params["id"],
                                     ))
 		
-		host = params["hostname"]
-		ip   = params["ipaddress"]
-
-		subprocess.call(['/usr/bin/sshpass', '-p' ,'51SdlQ#A', 'ssh', '-o', 'StrictHostKeyChecking=no', ip, 'hostname', host])
-		subprocess.call(['/usr/bin/sshpass', '-p' ,'51SdlQ#A', 'ssh', '-o', 'StrictHostKeyChecking=no', ip, '/bin/sh', '/root/script/sethost.sh', host])	
-	
         db.dbhandle.commit()
         return
-
