@@ -2,6 +2,7 @@
 
 import app.models.db as db
 import subprocess
+import random
 
 class Infra:
 
@@ -22,6 +23,13 @@ class Infra:
         db.con.execute(sql,(id,))
 
         return db.con.fetchone()
+
+      def createvm(self):
+	
+	source_str = 'abcdefghijklmnopqrstuvwxyz'
+	vname = "".join([random.choice(source_str) for x in xrange(15)])
+	subprocess.call(['sudo','/usr/bin/python', '/root/script/vmware/clonevm/clonevm.py' , '-s', '192.168.12.4', '-u', 'root', '-p', '51SdlQ#A', '-n', vname])
+
 
       def get_hostname(self,ipaddress):
 

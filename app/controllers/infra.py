@@ -42,6 +42,12 @@ def edit_host(id):
     return template('edit', i = result)
 
 
+@route('/createvm')
+def createvm():
+    result = model.createvm()
+    redirect("/")
+
+
 @post('/done')
 def done():
     post_data = {}
