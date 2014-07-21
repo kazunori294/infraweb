@@ -10,7 +10,7 @@ class Infra:
 
         result = {}
 
-        sql = "select * from host order by id"
+        sql = "select * from host order by regdate DESC"
         db.con.execute(sql)
         result["hosts"] = db.con.fetchall()
 
@@ -82,7 +82,7 @@ class Infra:
 
 	if params["del"]:
                 sql = "delete from host where id = %s"
-                db.con.execute(sql, (params["id"]))
+                db.con.execute(sql, (params["id"],))
 
 	else:
 		
