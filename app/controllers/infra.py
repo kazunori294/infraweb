@@ -24,7 +24,16 @@ def reg_api():
     host = {}
     host["hostname"] = request.query.getall('hostname')
     host["ipaddress"] = request.query.getall('ipaddress')
-
+    host["subnet"] = request.query.getall('subnet')
+    host["macaddress"] = request.query.getall('macaddress')
+    host["os"] = request.query.getall('os')
+    host["kernel"] = request.query.getall('kernel')
+    host["uptime"] = request.query.getall('uptime')
+    host["cpufm"] = request.query.getall('cpufm')
+    host["cpunum"] = request.query.getall('cpunum')
+    host["mem"] = request.query.getall('mem')
+    host["ping"] = request.query.getall('ping')
+    
     model.reg(host)
     return
 
@@ -41,6 +50,9 @@ def edit_host(id):
     result = model.edit(id)
     return template('edit', i = result)
 
+@route('/detail/<id>')
+def detail(id):
+    return template('detail')
 
 @route('/createvm')
 def createvm():

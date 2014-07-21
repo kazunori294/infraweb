@@ -23,7 +23,7 @@
 		    	{% for i in result.hosts %}
 		        <tr>
 		            <td>{{i.id}}</td>
-		            <td>{{i.hostname}}</td>
+		            <td><a href="/detail/{{i.id}}">{{i.hostname}}</a></td>
 		            <td>{{i.comment}}</td>
 		            <td>{{i.ipaddress}}</td>
 		            <td>{{i.regdate}}</td>
