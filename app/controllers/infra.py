@@ -50,9 +50,12 @@ def edit_host(id):
     result = model.edit(id)
     return template('edit', i = result)
 
+
 @route('/detail/<id>')
 def detail(id):
-    return template('detail')
+    result = model.edit(id)
+    return template('detail', i = result)
+
 
 @route('/createvm')
 def createvm():

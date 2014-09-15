@@ -54,16 +54,32 @@ class Infra:
       def reg(self,host):
  
         sql = "select id from host where ipaddress = %s"
-	db.con.execute(sql, host["ipaddress"])
+	db.con.execute(sql, (host["ipaddress"],))
 	result = db.con.fetchone()
 
 	if result:
 
                 sql = "update host set"
-                sql += " regdate=CURRENT_TIMESTAMP"
+                sql += " regdate=CURRENT_TIMESTAMP,"
+                sql += " subnet= %s,"
+                sql += " macaddress= %s,"
+                sql += " os= %s,"
+                sql += " kernel= %s,"
+                sql += " uptime= %s,"
+                sql += " cpufm= %s,"
+                sql += " cpunum= %s,"
+                sql += " mem= %s"
                 sql += " where ipaddress = %s"
                 db.con.execute(sql, (
-                                    host["ipaddress"],
+                                    host["subnet"],
+                                    host["macaddress"],
+                                    host["os"],
+                                    host["kernel"],
+                                    host["uptime"],
+                                    host["cpufm"],
+                                    host["cpunum"],
+                                    host["mem"],
+				    host["ipaddress"],
                                     ))
 
 	else:
